@@ -12,30 +12,42 @@ const createPageComponent = (leftComponent, rightComponent, height) => {
   return withLayout(leftComponent, rightComponent, height);
 };
 
-const pages = [
-  createPageComponent(Page1Left, Page1Right, 400),
-  createPageComponent(Page2Left, Page2Right, 600),
-  createPageComponent(Page3Left, Page3Right, 800),
-  // Add more pages as needed
-];
-
-function App() {
+const App = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [selectedCard, setSelectedCard] = useState(null);
 
-  const goToNext = () =>
-    setCurrentPage((prev) => Math.min(prev + 1, pages.length - 1));
   const goToPrevious = () => setCurrentPage((prev) => Math.max(prev - 1, 0));
+
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+    setCurrentPage(1); // Navigate to Page 2
+  };
+
+  const pages = [
+    createPageComponent(
+      (props) => <Page1Left {...props} />,
+      (props) => <Page1Right {...props} onCardClick={handleCardClick} />,
+      400
+    ),
+    createPageComponent(
+      (props) => <Page2Left {...props} goToPrevious={goToPrevious} />,
+      (props) => <Page2Right {...props} card={selectedCard} />,
+      600
+    ),
+    createPageComponent(
+      (props) => <Page3Left {...props} goToPrevious={goToPrevious} />,
+      (props) => <Page3Right {...props} />,
+      800
+    ),
+  ];
 
   const CurrentPageComponent = pages[currentPage];
 
   return (
     <div>
-      <CurrentPageComponent
-        goToNext={currentPage < pages.length - 1 ? goToNext : null}
-        goToPrevious={currentPage > 0 ? goToPrevious : null}
-      />
+      <CurrentPageComponent />
     </div>
   );
-}
+};
 
 export default App;
