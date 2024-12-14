@@ -7,7 +7,9 @@ import useDebounced from '../hooks/useDebounced';
 
 const CustomDropdown = ({ config, onSelectionChange }) => {
   const [options, setOptions] = useState(
-    config.id >= 5 ? [{ label: 'ALL', value: 'all' }] : []
+    config.id >= 5
+      ? [{ [config.keyField]: 'all', [config.displayField]: 'ALL' }]
+      : []
   );
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,7 +52,12 @@ const CustomDropdown = ({ config, onSelectionChange }) => {
         setNoData(true);
       } else {
         setOptions((prevOptions) =>
-          config.id >= 5 ? [{ label: 'ALL', value: 'all' }, ...data] : data
+          config.id >= 5
+            ? [
+                { [config.keyField]: 'all', [config.displayField]: 'ALL' },
+                ...data,
+              ]
+            : data
         );
       }
     } catch (error) {
@@ -84,6 +91,7 @@ const CustomDropdown = ({ config, onSelectionChange }) => {
   const handleIconClick = () => {
     if (config.id >= 5) {
       setIsOpen(!isOpen);
+      fetchData();
     }
   };
 
@@ -99,13 +107,13 @@ const CustomDropdown = ({ config, onSelectionChange }) => {
           color: selectedOptions.includes(options[index]) ? 'blue' : 'inherit',
         }}
       >
-        {options[index].label}
+        {options[index][config.displayField]}
       </span>
     </div>
   );
 
   return (
-    <div ref={dropdownRef}>
+    <div ref={dropdownRef} className="dropdown-wrapper">
       <TextField
         disabled={config.id >= 5}
         helperText={config.helperText}
@@ -116,7 +124,7 @@ const CustomDropdown = ({ config, onSelectionChange }) => {
         error={error}
       />
       {isOpen && (
-        <>
+        <div className="dropdown-list">
           {loading && <div>Loading...</div>}
           {error && <div>Error fetching data</div>}
           {noData && <div>No data found</div>}
@@ -131,7 +139,7 @@ const CustomDropdown = ({ config, onSelectionChange }) => {
               />
             )}
           </AutoSizer>
-        </>
+        </div>
       )}
     </div>
   );

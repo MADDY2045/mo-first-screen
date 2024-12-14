@@ -2,49 +2,61 @@
   {
     "id": 1,
     "type": "dropdown",
-    "label": "Dropdown 1",
-    "apiEndpoint": "/api/dropdown1",
+    "label": "Users",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/users",
     "multiSelect": true,
-    "helperText": "Choose an option"
+    "helperText": "Choose a user",
+    "keyField": "id",
+    "displayField": "name"
   },
   {
     "id": 2,
     "type": "dropdown",
-    "label": "Dropdown 2",
-    "apiEndpoint": "/api/dropdown2",
+    "label": "Posts",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/posts",
     "multiSelect": false,
-    "helperText": "Choose an option"
+    "helperText": "Choose a post",
+    "keyField": "id",
+    "displayField": "title"
   },
   {
     "id": 3,
     "type": "dropdown",
-    "label": "Dropdown 3",
-    "apiEndpoint": "/api/dropdown3",
+    "label": "Comments",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/comments",
     "multiSelect": false,
-    "helperText": "Choose an option"
+    "helperText": "Choose a comment",
+    "keyField": "id",
+    "displayField": "body"
   },
   {
     "id": 4,
     "type": "dropdown",
-    "label": "Dropdown 4",
-    "apiEndpoint": "/api/dropdown4",
+    "label": "Photos",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/photos",
     "multiSelect": true,
-    "helperText": "Choose an option"
+    "helperText": "Choose a photo",
+    "keyField": "id",
+    "displayField": "title"
   },
   {
     "id": 5,
     "type": "dropdown",
-    "label": "Dropdown 5",
-    "apiEndpoint": "/api/dropdown5",
+    "label": "Albums",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/albums",
     "iconAfter": "🔽",
-    "helperText": "Choose an option"
+    "helperText": "Choose an album",
+    "keyField": "id",
+    "displayField": "title"
   },
   {
     "id": 6,
     "type": "dropdown",
-    "label": "Dropdown 6",
-    "apiEndpoint": "/api/dropdown6",
+    "label": "Todos",
+    "apiEndpoint": "https://jsonplaceholder.typicode.com/todos",
     "iconAfter": "🔽",
-    "helperText": "Choose an option"
+    "helperText": "Choose a todo",
+    "keyField": "id",
+    "displayField": "title"
   }
 ]
