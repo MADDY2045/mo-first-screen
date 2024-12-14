@@ -16,10 +16,30 @@ html,
 .dropdown-option {
   padding: 10px;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dropdown-option:hover {
   background-color: #f0f0f0;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 4px;
+  z-index: 1000;
+  white-space: normal;
+  max-width: 300px;
+}
+
+.dropdown-option:hover .tooltip {
+  display: block;
 }
 
 .form-values {

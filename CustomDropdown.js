@@ -95,22 +95,30 @@ const CustomDropdown = ({ config, onSelectionChange }) => {
     }
   };
 
-  const rowRenderer = ({ key, index, style }) => (
-    <div
-      key={key}
-      style={style}
-      className="dropdown-option"
-      onClick={(event) => handleOptionClick(options[index], event)}
-    >
-      <span
-        style={{
-          color: selectedOptions.includes(options[index]) ? 'blue' : 'inherit',
-        }}
+  const rowRenderer = ({ key, index, style }) => {
+    const option = options[index];
+    const displayText = option[config.displayField];
+    const needsTooltip = displayText.length > 20; // Adjust as needed for ellipsis length
+
+    return (
+      <div
+        key={key}
+        style={style}
+        className="dropdown-option"
+        onClick={(event) => handleOptionClick(option, event)}
+        title={needsTooltip ? displayText : ''}
       >
-        {options[index][config.displayField]}
-      </span>
-    </div>
-  );
+        <span
+          style={{
+            color: selectedOptions.includes(option) ? 'blue' : 'inherit',
+          }}
+        >
+          {displayText}
+        </span>
+        {needsTooltip && <div className="tooltip">{displayText}</div>}
+      </div>
+    );
+  };
 
   return (
     <div ref={dropdownRef} className="dropdown-wrapper">
