@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "type": "dropdown",
+    "label": "Dropdown 1",
+    "apiEndpoint": "/api/dropdown1",
+    "multiSelect": true,
+    "helperText": "Choose an option"
+  },
+  {
+    "id": 2,
+    "type": "dropdown",
+    "label": "Dropdown 2",
+    "apiEndpoint": "/api/dropdown2",
+    "multiSelect": false,
+    "helperText": "Choose an option"
+  },
+  {
+    "id": 3,
+    "type": "dropdown",
+    "label": "Dropdown 3",
+    "apiEndpoint": "/api/dropdown3",
+    "multiSelect": false,
+    "helperText": "Choose an option"
+  },
+  {
+    "id": 4,
+    "type": "dropdown",
+    "label": "Dropdown 4",
+    "apiEndpoint": "/api/dropdown4",
+    "multiSelect": true,
+    "helperText": "Choose an option"
+  },
+  {
+    "id": 5,
+    "type": "dropdown",
+    "label": "Dropdown 5",
+    "apiEndpoint": "/api/dropdown5",
+    "iconAfter": "🔽",
+    "helperText": "Choose an option"
+  },
+  {
+    "id": 6,
+    "type": "dropdown",
+    "label": "Dropdown 6",
+    "apiEndpoint": "/api/dropdown6",
+    "iconAfter": "🔽",
+    "helperText": "Choose an option"
+  }
+]
