@@ -1,10 +1,12 @@
 // src/Layout.js
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import Hoc from './Hoc';
+import TotalsForTruck from './TotalsForTruck';
 
 const Container = styled.div`
   display: flex;
-  height: 100vh !important;
+  height: 100vh;
   width: 100vw;
   overflow: hidden;
 `;
@@ -14,7 +16,7 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 98vh; // Adjust to fit the new top section
+  height: 98vh;
 `;
 
 const TopLeftSection = styled.div`
@@ -31,6 +33,7 @@ const LeftSectionContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 `;
 
 const LeftSection = styled.div`
@@ -40,6 +43,9 @@ const LeftSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  padding: 4px;
+  box-sizing: border-box;
 `;
 
 const LeftButton = styled.button`
@@ -105,9 +111,38 @@ const Layout = () => {
       <Left>
         <TopLeftSection>Top Section</TopLeftSection>
         <LeftSectionContainer>
-          <LeftSection>Section 1</LeftSection>
-          <LeftSection>Section 2</LeftSection>
-          <LeftSection>Section 3</LeftSection>
+          <LeftSection>
+            <Hoc
+              title="Truck View"
+              icon="https://via.placeholder.com/20"
+              height="100%"
+              headerHeight="60px"
+            >
+              <p>This is some content inside the reusable component.</p>
+              <p>You can pass any children here.</p>
+            </Hoc>
+          </LeftSection>
+          <LeftSection>
+            <Hoc
+              title="Totals for Truck 1"
+              icon="https://via.placeholder.com/20"
+              height="100%"
+              headerHeight="60px"
+            >
+              <TotalsForTruck />
+            </Hoc>
+          </LeftSection>
+          <LeftSection>
+            <Hoc
+              title="Summary Level"
+              icon="https://via.placeholder.com/20"
+              height="100%"
+              headerHeight="60px"
+            >
+              <p>This is some content inside the reusable component.</p>
+              <p>You can pass any children here.</p>
+            </Hoc>
+          </LeftSection>
         </LeftSectionContainer>
         <LeftButton>Left Button</LeftButton>
       </Left>
@@ -116,7 +151,7 @@ const Layout = () => {
         <RightSection>Row 2</RightSection>
         <RightSection>Row 3</RightSection>
         <RightDynamicSection>
-          {[...Array(50)].map((_, i) => (
+          {[...Array(10)].map((_, i) => (
             <RightDynamicItem key={i}>Dynamic Item {i + 1}</RightDynamicItem>
           ))}
         </RightDynamicSection>
